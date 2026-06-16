@@ -1,0 +1,22 @@
+[
+  {
+    "directory": "/home/yellowhatpro/code/clawvm-cpp",
+    "command": "/usr/bin/g++ -std=c++20 -Iinclude -c src/core/page.cpp",
+    "file": "/home/yellowhatpro/code/clawvm-cpp/src/core/page.cpp"
+  },
+  {
+    "directory": "/home/yellowhatpro/code/clawvm-cpp",
+    "command": "/usr/bin/g++ -std=c++20 -Iinclude -c src/core/page_table.cpp",
+    "file": "/home/yellowhatpro/code/clawvm-cpp/src/core/page_table.cpp"
+  },
+  {
+    "directory": "/home/yellowhatpro/code/clawvm-cpp",
+    "command": "/usr/bin/g++ -std=c++20 -Iinclude -c src/core/page_type.cpp",
+    "file": "/home/yellowhatpro/code/clawvm-cpp/src/core/page_type.cpp"
+  },
+  {
+    "directory": "/home/yellowhatpro/code/clawvm-cpp",
+    "command": "/usr/bin/g++ -std=c++20 -Iinclude -c src/main.cpp",
+    "file": "/home/yellowhatpro/code/clawvm-cpp/src/main.cpp"
+  }
+]
