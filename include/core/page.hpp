@@ -16,7 +16,7 @@ struct Page {
   Fidelity min_fidelity;
   std::string provenance;
 
-  bool hard_pinned = false;
+  PinClass pin_class; // Runtime pin state; independent from the page type.
   bool dirty = false;
 
   std::int64_t last_access_turn = 0;
