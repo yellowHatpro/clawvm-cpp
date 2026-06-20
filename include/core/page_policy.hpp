@@ -12,6 +12,8 @@ struct PageTypePolicy {
 
   // ordered from highest fidelity to the lowest legal representation
   std::vector<Fidelity> degradation_path;
+
+  bool supports_fidelity(Fidelity fidelity) const;
 };
 
 const PageTypePolicy &policy_for(PageType type);

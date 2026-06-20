@@ -22,8 +22,13 @@ struct Page {
   std::int64_t last_access_turn = 0;
   double recompute_cost = 1.0;
 
-  std::unordered_map<Fidelity, Representation> representations;
-
   Page(std::string id, PageType type, Scope scope);
+
+  void add_representation(Representation representation);
+  const Representation *representation_at(Fidelity fidelity) const;
+  bool has_representation(Fidelity fidelity) const;
+
+private:
+  std::unordered_map<Fidelity, Representation> representations;
 };
 } // namespace clawvm::core

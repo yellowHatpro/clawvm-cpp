@@ -1,6 +1,7 @@
 #include "core/page_policy.hpp"
 #include "core/page_type.hpp"
 
+#include <algorithm>
 #include <stdexcept>
 
 namespace clawvm::core {
@@ -56,6 +57,11 @@ const PageTypePolicy &policy_for(PageType type) {
     return conversation_policy;
   }
   throw std::logic_error("Invalid PageType");
+}
+
+bool PageTypePolicy::supports_fidelity(Fidelity fidelity) const {
+  return std::find(degradation_path.begin(), degradation_path.end(),
+                   fidelity) != degradation_path.end();
 }
 
 } // namespace clawvm::core
