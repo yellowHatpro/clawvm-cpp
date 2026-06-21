@@ -1,6 +1,8 @@
 #include "core/page.hpp"
 #include "core/page_policy.hpp"
 #include "core/page_type.hpp"
+
+#include <algorithm>
 #include <stdexcept>
 #include <utility>
 
@@ -32,6 +34,27 @@ const Representation *Page::representation_at(Fidelity fidelity) const {
     return nullptr;
   }
   return &it->second;
+}
+
+const Representation *Page::minimum_viable_representation() const {
+  const auto &policy = policy_for(type);
+  auto min_fid_in_deg_path =
+      std::find(policy.degradation_path.begin(), policy.degradation_path.end(),
+                min_fidelity);
+  if (min_fid_in_deg_path == policy.degradation_path.end()) {
+    throw std::logic_error("minimum fidelity is not in the degradation path");
+  }
+  auto it = min_fid_in_deg_path;
+  while (true) {
+    if (const auto *representation = representation_at(*it)) {
+      return representation;
+    }
+    if (it == policy.degradation_path.begin()) {
+      break;
+    }
+    --it;
+  }
+  return nullptr;
 }
 
 bool Page::has_representation(Fidelity fidelity) const {

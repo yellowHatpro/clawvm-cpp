@@ -25,8 +25,9 @@ struct Page {
   Page(std::string id, PageType type, Scope scope);
 
   void add_representation(Representation representation);
-  const Representation *representation_at(Fidelity fidelity) const;
   bool has_representation(Fidelity fidelity) const;
+  const Representation *representation_at(Fidelity fidelity) const;
+  const Representation *minimum_viable_representation() const;
 
 private:
   std::unordered_map<Fidelity, Representation> representations;
